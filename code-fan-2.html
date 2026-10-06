@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>จดหมายถึงเธอ 💌</title>
+<meta property="og:title" content="มีจดหมายถึงเธอ 💌">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💌</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#fff1f5;--bg2:#ffd0e0;--ink:#6b1d3d;--paper:#fffaf3;--env:#ff9ebb;--env2:#ff7ba3;--pink:#ff4d88}
+@media (prefers-color-scheme:dark){:root{--bg1:#2b1020;--bg2:#4a1a36;--ink:#ffd9e8;--paper:#3a1a2c}}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:'Mali','Sarabun',system-ui,sans-serif;color:var(--ink);background:radial-gradient(circle at 30% 20%,var(--bg1),var(--bg2));overflow:hidden;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+main{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:16px}
+.hint{font-weight:600;animation:bob 1.6s infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}
+#dots{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:6}
+#dots i{width:10px;height:10px;border-radius:50%;background:rgba(255,77,136,.25);transition:.4s}
+#dots i.on{background:var(--pink);transform:scale(1.35)}
+.env{position:relative;width:min(320px,86vw);height:210px;cursor:pointer;transition:transform .4s}
+.env .back{position:absolute;inset:0;background:var(--env2);border-radius:10px;box-shadow:0 14px 34px rgba(255,77,136,.35)}
+.letter{position:absolute;left:8%;right:8%;top:8px;height:90%;background:var(--paper);border-radius:8px;padding:16px;transition:all .8s .3s;z-index:1;overflow:hidden}
+.front{position:absolute;inset:0;z-index:2;background:linear-gradient(135deg,transparent 50%,var(--env) 50%) left/50% 100% no-repeat,linear-gradient(225deg,transparent 50%,var(--env) 50%) right/50% 100% no-repeat;border-radius:10px;clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%)}
+.flap{position:absolute;left:0;right:0;top:0;height:55%;background:var(--env);z-index:3;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s}
+.seal{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font-size:34px;z-index:4;transition:opacity .3s}
+.env.open .flap{transform:rotateX(180deg);z-index:0}
+.env.open .seal{opacity:0}
+.env.open .letter{transform:translateY(-300px) scale(1.12);height:auto;min-height:260px;z-index:5;box-shadow:0 18px 40px rgba(0,0,0,.2)}
+.env.open,.env.open:hover{cursor:default;transform:translateY(150px)}
+.letter h2{font-size:20px;margin-bottom:8px;text-align:center}
+#txt{line-height:1.8;font-size:15px;min-height:130px;white-space:pre-line}
+.btns{display:flex;gap:12px;justify-content:center;margin-top:10px;align-items:center;flex-wrap:wrap}
+button{font-family:inherit;font-weight:700;border:0;border-radius:999px;cursor:pointer;padding:12px 24px;font-size:16px}
+.pk,#yes{background:linear-gradient(135deg,var(--pink),#ff8fb3);color:#fff;box-shadow:0 8px 18px rgba(255,77,136,.4)}
+#yes{font-size:var(--ys,17px)}
+#no{background:#fff;color:#999;box-shadow:0 3px 10px rgba(0,0,0,.12)}
+#no.run{position:fixed;z-index:30;transition:left .25s,top .25s}
+.hide{display:none!important}
+#card{background:rgba(255,250,243,.93);color:#6b1d3d;border-radius:28px;padding:24px 20px;width:min(420px,92vw);text-align:center;box-shadow:0 20px 50px rgba(255,77,136,.3);animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.7);opacity:0}}
+#card h2{font-size:22px;margin-bottom:6px}#card p{margin-bottom:12px;line-height:1.6}
+.area{position:relative;height:230px;border-radius:20px;background:rgba(255,158,187,.2);overflow:hidden;margin-bottom:10px}
+.hh{position:absolute;font-size:38px;background:none;padding:0;border:0;transition:left .35s,top .35s}
+.opt{display:block;width:100%;margin:8px 0;background:#fff;color:#6b1d3d;box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.shake{animation:sh .4s}@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.gifts{display:flex;justify-content:center;gap:10px;margin:14px 0}
+.gifts button{font-size:50px;background:none;padding:6px;animation:bob 1.4s infinite}
+.gifts button:nth-child(2){animation-delay:.3s}.gifts button:nth-child(3){animation-delay:.6s}
+.big{font-size:90px;font-weight:700;animation:pop .5s}
+.ring{font-size:64px;animation:beat 1.3s infinite}@keyframes beat{50%{transform:scale(1.2) rotate(8deg)}}
+.meter{height:18px;border-radius:99px;background:rgba(255,77,136,.2);overflow:hidden;margin:10px 0}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff8fb3,#ff4d88);transition:width 3s}
+.grow{animation:pulse .8s infinite}@keyframes pulse{50%{transform:scale(1.12)}}
+.fall{position:fixed;top:-30px;z-index:40;pointer-events:none;animation:f linear forwards}
+@keyframes f{to{transform:translateY(112vh) rotate(540deg)}}
+.pet{position:fixed;right:8px;bottom:calc(6px + env(safe-area-inset-bottom,0px));width:110px;z-index:15;pointer-events:none;animation:hop 1.3s infinite}
+@keyframes hop{50%{transform:translateY(-12px)}}
+.pet svg{width:100%;overflow:visible;display:block}
+#say{position:fixed;right:10px;bottom:calc(140px + env(safe-area-inset-bottom,0px));background:#fff;color:#6b1d3d;border-radius:16px;padding:8px 12px;font-size:13px;font-weight:600;max-width:170px;z-index:15;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.ears{transform-origin:60px 40px;animation:wig 2s infinite}@keyframes wig{50%{transform:rotate(4deg)}}
+.arm{transform-origin:98px 96px;animation:wave .7s infinite alternate}@keyframes wave{to{transform:rotate(35deg)}}
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 3.5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.m-sad,.e-h{display:none}
+body.sad .m-happy{display:none}body.sad .m-sad{display:block}
+body.happy .eye{display:none}body.happy .e-h{display:block}body.happy .pet{animation-duration:.5s}
+</style></head>
+<body>
+<div id="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+<main>
+  <p class="hint" id="hint">แตะที่ซองจดหมายเลย 💌</p>
+  <div class="env" id="env">
+    <div class="back"></div>
+    <div class="letter"><h2 id="head"></h2><div id="txt"></div>
+      <div class="btns hide" id="btns"><button class="pk" onclick="s1()">ต่อไป ➡️</button></div></div>
+    <div class="front"></div><div class="flap"></div><div class="seal">💗</div>
+  </div>
+  <section id="card" class="hide"></section>
+</main>
+<div id="say">แตะซองเลยน้า 💌</div>
+<div class="pet"><svg viewBox="0 0 120 140">
+<g class="ears"><ellipse cx="42" cy="26" rx="11" ry="26" fill="#fff" stroke="#e8a0b8" stroke-width="2"/><ellipse cx="42" cy="28" rx="5" ry="17" fill="#ffb3cb"/><ellipse cx="78" cy="26" rx="11" ry="26" fill="#fff" stroke="#e8a0b8" stroke-width="2"/><ellipse cx="78" cy="28" rx="5" ry="17" fill="#ffb3cb"/></g>
+<ellipse cx="60" cy="112" rx="34" ry="26" fill="#fff" stroke="#e8a0b8" stroke-width="2"/>
+<path d="M60 124c-11-8-15-14-9-18 4-2 7 1 9 5 2-4 5-7 9-5 6 4 2 10-9 18z" fill="#ff6f9f"/>
+<g class="arm"><ellipse cx="98" cy="108" rx="8" ry="15" fill="#fff" stroke="#e8a0b8" stroke-width="2" transform="rotate(-18 98 108)"/></g>
+<circle cx="60" cy="70" r="36" fill="#fff" stroke="#e8a0b8" stroke-width="2"/>
+<ellipse class="eye" cx="46" cy="68" rx="4.5" ry="6" fill="#4a2038"/><ellipse class="eye" cx="74" cy="68" rx="4.5" ry="6" fill="#4a2038"/>
+<g class="e-h" fill="none" stroke="#4a2038" stroke-width="3" stroke-linecap="round"><path d="M40 70q6-9 12 0"/><path d="M68 70q6-9 12 0"/></g>
+<circle cx="35" cy="80" r="6" fill="#ff9ebb" opacity=".6"/><circle cx="85" cy="80" r="6" fill="#ff9ebb" opacity=".6"/>
+<ellipse cx="60" cy="76" rx="3" ry="2.2" fill="#ff6f9f"/>
+<path class="m-happy" d="M52 82q8 9 16 0" fill="none" stroke="#4a2038" stroke-width="2.5" stroke-linecap="round"/>
+<path class="m-sad" d="M53 88q7-8 14 0" fill="none" stroke="#4a2038" stroke-width="2.5" stroke-linecap="round"/>
+</svg></div>
+<script>
+/* ===== แก้ตรงนี้ ===== */
+const HER="เธอ", ME="ฉัน";
+const LETTER=`ตั้งแต่วันที่รู้จักกัน ทุกวันก็สดใสขึ้นเยอะเลย
+${ME}ชอบรอยยิ้มของ${HER}
+ชอบเวลาที่ได้คุยกัน
+แต่ก่อนจะถึงคำถามสำคัญ…
+${HER}ต้องผ่านด่านเล็กๆ ก่อนนะ 😏`;
+const ASK=`${HER} ยอมเป็นแฟนกับ${ME}ไหม?`;
+const THANKS=`ขอบคุณที่ตอบตกลงนะ 🥰\n${ME}จะดูแล${HER}ให้ดีที่สุดเลย 💕`;
+/* ==================== */
+const $=id=>document.getElementById(id), talk=t=>$("say").textContent=t;
+const env=$("env"),txt=$("txt"),card=$("card");
+$("head").textContent=`ถึง ${HER} ที่รัก 💕`;
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function go(n){[...$("dots").children].forEach((d,i)=>d.classList.toggle("on",i===n))}
+function show(h){env.classList.add("hide");$("hint").classList.add("hide");card.classList.remove("hide");card.style.animation="none";card.offsetWidth;card.style.animation="";card.innerHTML=h}
+function nextBtn(fn){card.insertAdjacentHTML("beforeend",`<button class="pk" id="nx">ต่อไป ➡️</button>`);$("nx").onclick=fn}
+function rain(n=100){const e=["💖","💗","🌸","✨","🎉","💌"];for(let i=0;i<n;i++){const c=document.createElement("div");c.className="fall";c.textContent=e[i%6];c.style.left=Math.random()*100+"vw";c.style.fontSize=14+Math.random()*24+"px";c.style.animationDuration=2.5+Math.random()*3+"s";c.style.animationDelay=Math.random()*1.5+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),8000)}}
+
+/* ด่าน 0: ซองจดหมาย */
+let opened=false;
+env.addEventListener("click",()=>{
+  if(opened)return;opened=true;env.classList.add("open");$("hint").classList.add("hide");talk("ตั้งใจอ่านนะ 🥺");
+  let i=0;setTimeout(function t(){txt.textContent=LETTER.slice(0,++i);if(i<LETTER.length)setTimeout(t,50);else $("btns").classList.remove("hide")},1100);
+});
+
+/* ด่าน 1: จับหัวใจ 5 ดวง (หนีเร็วขึ้นเรื่อยๆ) */
+function s1(){
+  go(1);talk("ไวๆ เลยน้า! 💨");
+  show(`<h2>🎯 ด่าน 1</h2><p>แตะหัวใจให้ครบ 5 ดวง ก่อนมันหนีไป!</p><div class="area" id="area"><button class="hh" id="hh">💗</button></div><b id="cnt">0 / 5</b><br><br>`);
+  let c=0,spd=1000;const h=$("hh"),a=$("area");
+  const mv=()=>{h.style.left=Math.random()*(a.clientWidth-50)+"px";h.style.top=Math.random()*(a.clientHeight-50)+"px"};
+  mv();let t=setInterval(mv,spd);
+  h.onclick=()=>{c++;$("cnt").textContent=c+" / 5";mv();
+    if(c>=5){clearInterval(t);h.remove();talk("เก่งมากกก 🎉");card.querySelector("h2").textContent="✅ ผ่านแล้ว!";rain(30);nextBtn(s2)}
+    else{clearInterval(t);spd-=140;t=setInterval(mv,spd);talk(["อีกๆ!","เร็วขึ้นแล้วนะ 😆","ใกล้แล้ว!","ดวงสุดท้าย!"][c-1])}};
+}
+
+/* ด่าน 2: ควิซ */
+function s2(){
+  go(2);talk("ระวังกับดักนะ 😏");
+  show(`<h2>🧠 ด่าน 2</h2><p>ใครน่ารักที่สุดในโลก?</p><div id="ops"></div>`);
+  [["กระต่ายตัวนี้ 🐰",0],["แมวบ้านไหนก็ได้ 🐱",0],[`${HER}ไงล่ะ 😍`,1]].sort(()=>Math.random()-.5).forEach(([t,ok])=>{
+    const b=document.createElement("button");b.className="opt";b.textContent=t;
+    b.onclick=()=>{if(ok){$("ops").innerHTML=`<p><b>ถูกต้อง! 😍 ตอบเก่งมาก</b></p>`;talk("รู้ใจจัง 💕");nextBtn(s3)}
+      else{b.classList.add("shake");b.disabled=true;b.style.opacity=.4;talk("ผิดงั้นน๊า~ ตอบใหม่ 😝")}};
+    $("ops").appendChild(b)});
+}
+
+/* ด่าน 3: เปิดกล่องของขวัญ (กล่องสุดท้ายถึงจะได้) */
+function s3(){
+  go(3);talk("เลือกกล่องเลย~ 🎁");
+  show(`<h2>🎁 ด่าน 3</h2><p>เปิดกล่องทั้ง 3 ใบ ของจริงอยู่ใบสุดท้าย!</p><div class="gifts" id="g"></div><p id="gm">&nbsp;</p>`);
+  let n=0;const msg=["ว่างเปล่า… มีแต่ลม 🌬️","ยังไม่ใช่น้า~ ใกล้แล้ว 😆"];
+  for(let i=0;i<3;i++){const b=document.createElement("button");b.textContent="🎁";
+    b.onclick=async()=>{b.onclick=null;b.style.animation="none";n++;
+      if(n<3){b.textContent="💨";$("gm").textContent=msg[n-1];talk(msg[n-1])}
+      else{b.textContent="💍";$("gm").textContent="";talk("ใจเต้นแรงมาก 💓");
+        for(const x of [3,2,1]){card.innerHTML=`<p>กำลังเปิดคำถามสำคัญ…</p><div class="big">${x}</div>`;await wait(900)}
+        s4()}};
+    $("g").appendChild(b)}
+}
+
+/* ด่านสุดท้าย: ขอเป็นแฟน — ปุ่มไม่ วิ่งได้ 3 ครั้ง แล้วบังคับตกลง */
+function s4(){
+  go(4);talk("ตอบดีๆ นะ… 🥺");
+  show(`<div class="ring">💍</div><h2>${ASK}</h2><div class="btns"><button id="yes">ตกลง 💖</button><button id="no">ไม่</button></div>`);
+  const yes=$("yes"),no=$("no");let jumps=0,last=0,ys=17;
+  const force=()=>{no.remove();document.body.classList.remove("sad");talk("ไม่มีทางเลือกแล้วน้า~ กดตกลงเลย 💖");yes.style.setProperty("--ys","30px");yes.classList.add("grow")};
+  const jump=e=>{if(e&&e.cancelable)e.preventDefault();const now=Date.now();if(now-last<450)return;last=now;
+    if(jumps>=3){force();return}jumps++;
+    document.body.appendChild(no);no.classList.add("run");
+    no.style.left=Math.random()*(innerWidth-no.offsetWidth-20)+10+"px";no.style.top=Math.random()*(innerHeight-no.offsetHeight-20)+10+"px";
+    document.body.classList.add("sad");talk(["จับให้ได้สิ 😝","ช้าไปน้า~","เหลืออีกนิดเดียว…"][jumps-1]);
+    ys+=7;yes.style.setProperty("--ys",ys+"px");if(jumps===3)setTimeout(force,1600)};
+  no.onmouseenter=jump;no.ontouchstart=jump;no.onclick=jump;
+  yes.onclick=()=>{no.remove();document.body.classList.remove("sad");document.body.classList.add("happy");talk("เย้~ รักที่สุดเลย 💖");
+    card.innerHTML=`<div class="ring">🥰</div><h2>กำลังคำนวณความรัก…</h2><div class="meter"><i id="mt"></i></div><b id="pc">0%</b>`;
+    requestAnimationFrame(()=>$("mt").style.width="100%");
+    let p=0;const iv=setInterval(()=>{p+=2;$("pc").textContent=Math.min(p,100)+"%";if(p>=100){clearInterval(iv);
+      card.innerHTML=`<div class="ring">💖</div><h2>รักเต็ม 100% ✅</h2><p style="white-space:pre-line">${THANKS}</p>`;rain(120);setTimeout(()=>rain(80),2500)}},60)};
+}
+</script></body></html>
